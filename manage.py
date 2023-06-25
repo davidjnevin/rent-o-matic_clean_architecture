@@ -116,6 +116,8 @@ def test(args):
         "pytest",
         "-svv",
         "--cov=application",
+        "--ignore=final",
+        "--no-header",
         "--cov-report=term-missing",
     ]
     cmdline.extend(args)
