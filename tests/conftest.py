@@ -1,5 +1,6 @@
 import pytest
 from application.app import create_app
+from manage import read_json_configuration
 
 @pytest.fixture
 def app():
@@ -16,3 +17,7 @@ def pytest_runtest_setup(item):
     if "integration" in item.keywords and not item.config.getvalue(
         "integration"):
         pytest.skip("need --integration option to run")
+
+@pytest.fixture(scope="session")
+def app_configuration():
+    return read_json_configuration("testing")
